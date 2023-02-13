@@ -158,6 +158,7 @@ div.label:last-of-type{
     clear: left;
     float: left;
     padding-right: 0.125in;
+    margin-left: 0.125in;
 }
 
 .avery-22513{
@@ -172,6 +173,7 @@ div.label:last-of-type{
     clear: left;
     float: left;
     padding-right: 0.125in;
+    margin-left: 0.125in;
 }
 @media print{
     .label:last-of-type{
@@ -213,8 +215,8 @@ div.label:last-of-type{
         height: 2in !important;
     }
 
-    .avery-5163.chrome-label div.resource_id {
-            font-size: 110%;
+    .avery-5163.chrome-label div {
+            font-size: 95%;
     }
     /* tell chrome to behave about page breaks */
     .avery-5163.chrome-label:nth-of-type(10){
@@ -240,5 +242,12 @@ div.label:last-of-type{
     /* tell chrome to behave about page breaks */
     .avery-22513.chrome-label:nth-of-type(6){
         page-break-after: auto;
+    }
+
+    .label.avery-22513 {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
     }
 }
