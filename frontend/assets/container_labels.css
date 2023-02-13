@@ -145,11 +145,6 @@ div.label:last-of-type{
     page-break-after: avoid !important;
 }
 /* label specific sizing and layout */
-/* single thermal label on a spool */
-.dymo-30256{
-    height: 87mm;
-    width: 57mm;
-}
 /* standard 2x4 with 10 labels per sheet in portrait mode */
 .avery-5163{
     height: 2in;
@@ -160,6 +155,20 @@ div.label:last-of-type{
     padding-left: 0.125in;
 }
 .avery-5163:nth-of-type(2n+1){
+    clear: left;
+    float: left;
+    padding-right: 0.125in;
+}
+
+.avery-22513{
+    height: 3in;
+    width: 3.75in;
+}
+.avery-22513:nth-of-type(2n){
+    float: right;
+    padding-left: 0.125in;
+}
+.avery-22513:nth-of-type(2n+1){
     clear: left;
     float: left;
     padding-right: 0.125in;
@@ -187,14 +196,6 @@ div.label:last-of-type{
         Note also that different browsers scale the printing differently
         despite what *should* happen.
      *************************************************************/
-    /******** dymo 30265 *************/
-    .dymo-30256{
-        page-break-after: always;
-    }
-    /* tell chrome to behave about page breaks */
-    .dymo-30256.chrome-label{
-        page-break-after: auto;
-    }
     /********** avery 5163 **********/
     .avery-5163:nth-of-type(10){
         page-break-after: always;
@@ -211,8 +212,33 @@ div.label:last-of-type{
         width: 3.875in !important;
         height: 2in !important;
     }
+
+    .avery-5163.chrome-label div.resource_id {
+            font-size: 110%;
+    }
     /* tell chrome to behave about page breaks */
     .avery-5163.chrome-label:nth-of-type(10){
+        page-break-after: auto;
+    }
+
+    /********** avery 5163 **********/
+    .avery-22513:nth-of-type(6){
+        page-break-after: always;
+    }
+    /*************************************************************** 
+        safari does some wierd scaling things
+        adjust for that and then reset chrome
+    ****************************************************************/
+    .avery-22513.safari-label{
+        width: 3.7125in !important;
+        height: 2.85in !important;
+    }
+    .avery-22513.chrome-label{
+        width: 3.633in !important;
+        height: 3in !important;
+    }
+    /* tell chrome to behave about page breaks */
+    .avery-22513.chrome-label:nth-of-type(6){
         page-break-after: auto;
     }
 }
