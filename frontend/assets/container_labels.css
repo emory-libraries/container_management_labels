@@ -1,253 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap');
+
 @charset "utf-8";
-/* container labels printing css
-   the convention will be to use the same text for ids/classes as used for the label type in en.yml
-   example:
-   en:
-  top_container_labels:
-    _frontend:
-      bulk_operations:
-        label_type_dymo_30256: dymo-30256
-   
-   use "dymo-30256" as your id/class namespace
- */
-/* generic layout */
+
+@page {
+  size: letter portrait;
+}
+
 *::before,
-*::after{
-    box-sizing: border-box;
+*::after {
+  box-sizing: border-box;
 }
-/* add the glyphicons in so we can add custom icons if desired */
-@font-face{
-    font-family: "Glyphicons Halflings";
-    src: url("/assets/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("/assets/glyphicons-halflings-regular.woff2") format("woff2"), url("/assets/glyphicons-halflings-regular.woff") format("woff"), url("/assets/glyphicons-halflings-regular.ttf") format("truetype"), url("/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12pt;
 }
-body{
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 12pt;
+
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  box-sizing: border-box;
 }
-.label{
-    margin: 5px auto;
-    overflow: scroll;
+
+.label {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  font-family: 'Spectral', serif;
+  margin: 5px auto;
+  overflow: scroll;
+  page-break-inside: avoid;
 }
-div.label > div{
-    font-size: 100%;
-    height: auto;
-    margin: 3px auto;
-    text-align: center;
-    width: 95%;
+
+div.label > div {
+  text-align: center;
+  flex-basis: 100%;
+  box-sizing: border-box;
 }
-div.label .insitution_name{
-    font-size: 120%;
-}
-div.label .repository_name{
-    font-size: 90%;
-}
+
 div.label .institution_name,
-div.label .repository_name{
-    color: #555;
-    font-style: italic;
-}
-div.label .type{
-    background-color: #222;
-    border-bottom: 1px solid #666;
-    color: #fff;
-    font-size: 100%;
-    padding: 2px 0;
-}
-div.label .resource_id{
-    background-color: #222;
-    border-bottom: 1px solid #eee;
-    color: #fff;
-    font-weight: 500;
-    font-size: 140%;
-    margin-bottom: 0;
-    padding: 5px 0;
-}
-div.label .agent_name{
-    color: #555;
-    font-style: italic;
-    padding: 2px 0;
-}
-/* demonstrates how to add a custom glyphicon icon to a label element */
-/* 
-div.label .agent_name::before{
-    content: "\E008";
-    -moz-osx-font-smoothing: grayscale;
-    display: inline-block;
-    font-family: "Glyphicons Halflings";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    padding: 0 3px 0 0;
-    position: relative;
-    top: 1px;
-}
- */
-div.label .indicator{
-    background-color: #222;
-    color: #fff;
-    font-weight: 900;
-    font-size: 150%;
-    margin-top: 0;
-    max-height: 100px;
-    padding: 5px 0;
-}
-div.label .resource_title{
-    font-weight: bold;
-    font-size: 100%;
-}
-div.label .location{
-    background-color: #efefef;
-    font-size: 140% !important;
-    font-weight: bold;
-    margin-top: 0;
-    padding: 5px 0;
-}
-div.label .area{
-    background-color: #efefef;
-    margin-bottom: 0;
-    margin-top: 10px;
-    padding: 5px 0 0 0;
-}
-/*
-div.label .area::before{
-    content: "\E062";
-    -moz-osx-font-smoothing: grayscale;
-    display: inline-block;
-    font-family: "Glyphicons Halflings";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    padding: 0 3px 0 0;
-    position: relative;
-    top: 1px;
-}
-*/
-div.records_management_id{
-    background-color: #efefef;
-    padding: 3px 0;
-    margin: 5px auto !important;
-    font-size: 120% !important;
-}
-div.records_management_id::before{
-    content: "RM ID: "
-}
-div.label .barcode,
-div.label .barcode > div{
-    margin: 2px auto;
-    max-height: 50%;
-}
-div.label .barcode div:last-of-type{
-    clear: none !important;
-}
-div.label:last-of-type{
-    page-break-after: avoid !important;
-}
-/* label specific sizing and layout */
-/* standard 2x4 with 10 labels per sheet in portrait mode */
-.avery-5163{
-    height: 2in;
-    width: 3.875in;
-}
-.avery-5163:nth-of-type(2n){
-    float: right;
-    padding-left: 0.125in;
-}
-.avery-5163:nth-of-type(2n+1){
-    clear: left;
-    float: left;
-    padding-right: 0.125in;
-    margin-left: 0.125in;
+div.label .repository_name {
+  font-size: 80%;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
 }
 
-.avery-22513{
-    height: 3in;
-    width: 3.75in;
+div.label .institution_name {
+  align-items: flex-end;
 }
-.avery-22513:nth-of-type(2n){
-    float: right;
-    padding-left: 0.125in;
+
+div.label .repository_name {
+  align-items: flex-start;
 }
-.avery-22513:nth-of-type(2n+1){
-    clear: left;
-    float: left;
-    padding-right: 0.125in;
-    margin-left: 0.125in;
+
+.resource_id {
+  font-size: 150%;
+  font-weight: bold;
 }
-@media print{
-    .label:last-of-type{
-        page-break-after: avoid !important;
-    }
-    /*************************************************************** 
-        safari does some wierd margin things
-        adjust for that and then reset chrome
-    ****************************************************************/
-    .labels.safari-label{
-        margin-top: .25in !important;
-    }
-    .labels.chrome-label{
-        margin-top: 0in !important;
-    }
-    /*************************************************************
-        Set when the page breaks should occur for each label type. 
-        
-        Notice that the dymo is for every label
-        while the avery is after every 10th label.
-        
-        Note also that different browsers scale the printing differently
-        despite what *should* happen.
-     *************************************************************/
-    /********** avery 5163 **********/
-    .avery-5163:nth-of-type(10){
-        page-break-after: always;
-    }
-    /*************************************************************** 
-        safari does some wierd scaling things
-        adjust for that and then reset chrome
-    ****************************************************************/
-    .avery-5163.safari-label{
-        width: 3.6in !important;
-        height: 1.9in !important;
-    }
-    .avery-5163.chrome-label{
-        width: 3.875in !important;
-        height: 2in !important;
-    }
 
-    .avery-5163.chrome-label div {
-            font-size: 95%;
-    }
-    /* tell chrome to behave about page breaks */
-    .avery-5163.chrome-label:nth-of-type(10){
-        page-break-after: auto;
-    }
+div.label .agent_name,
+div.label .resource_title {
+  font-size: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-    /********** avery 5163 **********/
-    .avery-22513:nth-of-type(6){
-        page-break-after: always;
-    }
-    /*************************************************************** 
-        safari does some wierd scaling things
-        adjust for that and then reset chrome
-    ****************************************************************/
-    .avery-22513.safari-label{
-        width: 3.7125in !important;
-        height: 2.85in !important;
-    }
-    .avery-22513.chrome-label{
-        width: 3.633in !important;
-        height: 3in !important;
-    }
-    /* tell chrome to behave about page breaks */
-    .avery-22513.chrome-label:nth-of-type(6){
-        page-break-after: auto;
-    }
+div.label .agent_name {
+  align-items: flex-end;
+}
 
-    .label.avery-22513 {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-wrap: wrap;
-    }
+div.label .resource_title {
+  align-items: flex-start;
+}
+
+div.label .type,
+div.label .indicator {
+  flex-basis: 50%;
+  display: flex;
+  font-weight: bold;
+}
+
+div.label .type {
+  justify-content: flex-end;
+}
+
+div.label .indicator {
+  justify-content: flex-start;
+  padding-left: 5px;
+}
+
+/*** 5163 Label (2 x 4) ***/
+.avery-5163.safari-label {
+  width: 3.5in;
+  height: 1.8in;
+}
+
+/* reset for chrome */
+.avery-5163,
+.avery-5163.chrome-label {
+  width: 3.875in;
+  height: 2in;
+}
+
+.avery-5163:nth-child(10n) {
+  page-break-after: always;
+  break-after: always;
+}
+
+.avery-5163.chrome-label:nth-child(10n) {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+.avery-5163:nth-of-type(2n) {
+  /* float: right; */
+  padding-left: 0.125in;
+}
+.avery-5163:nth-of-type(2n + 1) {
+  clear: left;
+  /* float: left; */
+  padding-right: 0.125in;
+  margin-left: 0.125in;
+}
+
+/*** 22513 Label (3 1/3 x 4) ***/
+.avery-22513.safari-label {
+  width: 3.7125in;
+  height: 2.85in;
+}
+
+/* reset for chrome */
+.avery-22513,
+.avery-22513.chrome-label {
+  width: 3.75in;
+  height: 3in;
+}
+
+.avery-22513:nth-child(6n) {
+  page-break-after: always;
+  break-after: always;
+}
+
+.avery-22513:nth-of-type(2n) {
+  /* float: right; */
+  padding-left: 0.125in;
+}
+.avery-22513:nth-of-type(2n + 1) {
+  clear: left;
+  /* float: left; */
+  padding-right: 0.125in;
+  margin-left: 0.125in;
+}
+
+@media print {
+  body {
+    margin: 0;
+  }
 }
